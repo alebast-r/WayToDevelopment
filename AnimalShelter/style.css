@@ -1,0 +1,344 @@
+:root {
+    --color-primary: #F1CDB3;
+    --color-light-xl: #FFFFFF;
+    --color-light-l: #F6F6F6;
+    --color-light-s: #FAFAFA;
+    --color-dark-3xl: #292929;
+    --color-dark-xl: #4C4C4C;
+    --color-dark-l: #545454;
+    --color-dark-s: #CDCDCD;
+    /* Переменные для указания ширины */
+    --container-desktop: 1280px;
+    --container-tablet: 768px;
+    --container-mobile: 375px;
+}
+
+/* * { 
+    border: 1px solid red !important; 
+} */
+
+@media (max-width: 767px)  { /* Mobile */ }
+@media (max-width: 374px)  { /* Small Mobile */ }
+
+body{
+    margin: 0; padding: 0;
+    background-color: #000;
+}
+/* Общиий контейнер для всей страницы */
+.mainContainer{
+    width: var(--container-desktop);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+@media (max-width: 1279px) {
+    .mainContainer {
+        width: 100%;
+        max-width: var(--container-tablet);
+    }
+}
+/* Контейнер стартовой страницы */
+.startPageConteiner{
+    width: var(--container-desktop);
+    min-height: 908px;
+    background: url(images/maskMainPage.png), radial-gradient(circle at top left, #5B483A, #262425);
+    overflow: hidden;
+    position: relative;
+}
+@media (max-width: 1279px) {
+    .startPageConteiner{
+        min-height: 1165px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+/* header */
+header {
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 1279px) {
+      header {
+        width: auto;
+        margin: 30px 30px;}
+    }
+
+header a{
+    width: 190px;
+    line-height: 1.1;
+    text-decoration: none;
+}
+header a span{
+    display: block;
+}
+header span:first-child{
+    color: var(--color-primary);
+    font-size: 32px;
+    font-family: Georgia, serif;
+    letter-spacing: 0.05em;
+}
+header span:last-child{
+    color: var(--color-light-xl);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin-left: 4px; margin-top: 10px;
+}
+header nav ul {
+    display: flex;
+    gap: 35px; /* Расстояние между пунктами */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+header ul li a{
+    text-decoration: none;
+    color: var(--color-light-xl);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: var(--color-dark-s);
+}
+.activeAboutBtn{
+    padding-bottom: 4px;
+    color: var(--color-light-s);
+    border-bottom: 3px var(--color-primary) solid;
+}
+
+
+/* блок с текстом и щенком */
+.StartScreen-Container {
+    position: absolute;
+    top: 180px; left: 40px;    
+    display: flex; 
+}
+.StartPageContent{
+    margin-top: 163px;
+    width: 460px; height: 322px;
+}
+.StartPageContent p:first-child{
+    padding-right: 150px;
+    font-size: 44px;
+    margin: 0;
+    color: var(--color-light-xl);
+    font-family: Georgia, serif;
+    line-height: 130%;
+}
+.StartPageContent p:nth-child(2){
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: var(--color-dark-s);
+    margin: 40px 0;
+    line-height: 160%;
+}
+.StartPageContent button{
+    padding: 15px 45px;
+    background: var(--color-primary);
+    border-radius: 100px; border: none;
+    font-size: 17px;
+    font-family: Georgia, serif;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-3xl);
+}
+.StartScreenPuppy{
+    margin-left: 42px;
+}
+@media (max-width: 1279px){
+    .StartScreen-Container{
+        top: 150px; left: 99px;
+        flex-direction: column;
+    }
+    .StartPageContent{
+        margin: 0 54px 0 55px;
+        width: 460px; height: 322px;
+    }
+    .StartPageContent button{
+        margin-left: 126px; 
+    }
+    .StartScreenPuppy{
+        width: 569px; height: 593px;
+        margin-top: 100px; margin-left: 70px;
+    }
+}  
+
+/* Страница about page */
+.aboutPageContainer{
+    width: 100%;
+    margin: 0 auto;
+    background: var(--color-light-xl);
+    min-height: 588px;
+}
+@media (max-width: 1279px){
+    .aboutPageContainer{
+        width: 100%;
+        min-height: 1048px;
+    }
+}
+
+.aboutPageContent{
+    width: 1200px;
+    box-sizing: border-box;
+    margin-top: 80px;
+    height: 408px;
+    display: flex;
+}
+@media (max-width: 1279px){
+    .aboutPageContent{
+        width: 437px; height: 868px;
+        flex-direction: column-reverse;
+        margin: 80px auto;
+    }
+}
+
+.aboutPageContent img{
+    margin-left: 175px;
+    width: 300px; height: 408px;
+}
+@media (max-width: 1279px) {
+    .aboutPageContent img{
+        margin: 80px auto 0;
+    } 
+}
+
+.aboutPageContent div{
+    width: 430px; height: 380px;
+    margin-left: 120px; margin-top: 14px;
+}
+@media (max-width: 1279px) {
+    .aboutPageContent div{
+        margin: 0 auto;
+    } 
+}
+
+.aboutPageContent div h2{
+    width: 370px; height: 90px;
+    font-family: Georgia, serif;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    margin: 0;
+    font-weight: 400;
+    color: var(--color-dark-l);
+}
+.aboutPageContent div p{
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 160%;
+    color: var(--color-dark-xl);
+    letter-spacing: 0;
+}
+.aboutPageContent div p:nth-child(3){
+    margin-top: 25px;
+}
+
+/* Страница petsPage */
+.petsPageContainer{
+
+    width: 100%;
+    margin: 0 auto;
+    background: var(--color-light-l);
+    min-height: 877px;
+}
+.petsPageContent{
+    margin-top: 80px; margin-inline: auto;
+    width: 1200px; height: 697px;
+    
+}
+.petsPageContent h3{
+    width: 400px; height: 90px;
+    font-size: 35px;
+    font-family: Georgia, serif;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 400;
+    color: var(--color-dark-l);
+}
+.sliderPetsPage{
+    width: 1200px; height: 440px;
+    margin: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.slider-container {
+    width: 990px; /* 270px × 3 + 90px × 2 gap */
+    overflow: hidden;
+    margin: 0 auto;
+}
+.slider-track {
+    display: flex;
+    gap: 90px;
+    transition: transform 0.5s ease;
+}
+.slide {
+    min-width: 270px;
+    background: var(--color-light-s);
+    border-radius: 9px;
+    text-align: center;
+    padding: 0 0 30px 0;
+}
+.slide img {
+    width: 100%;
+    border-radius: 9px 9px 0 0;
+}
+.slide h4 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin: 30px 0;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
+}
+.slide button{
+    border: 2px solid var(--color-primary);
+    background: var(--color-light-s);
+    border-radius: 100px;
+    padding: 15px 45px;
+}
+.slide button a{
+    text-decoration: none;
+    color: var(--color-dark-l);
+    font-size: 17px;
+    font-family: Georgia, serif;
+}
+.sliderPetsPage-arrow-prev{
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+.sliderPetsPage-arrow-next{
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.GetToKnowTheRest{
+    display: block;
+    margin: 60px auto;
+    padding: 15px 45px;
+    border-radius: 100px;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-dark-3xl);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    font-family: Georgia, serif;
+}
