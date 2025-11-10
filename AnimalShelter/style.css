@@ -236,19 +236,22 @@ header ul li a{
     margin-top: 25px;
 }
 
+
+
+
 /* Страница petsPage */
 .petsPageContainer{
-
     width: 100%;
     margin: 0 auto;
     background: var(--color-light-l);
     min-height: 877px;
 }
+
 .petsPageContent{
     margin-top: 80px; margin-inline: auto;
     width: 1200px; height: 697px;
-    
 }
+
 .petsPageContent h3{
     width: 400px; height: 90px;
     font-size: 35px;
@@ -268,11 +271,13 @@ header ul li a{
     justify-content: center;
     gap: 50px;
 }
+
 .slider-container {
     width: 990px; /* 270px × 3 + 90px × 2 gap */
     overflow: hidden;
     margin: 0 auto;
 }
+
 .slider-track {
     display: flex;
     gap: 90px;
@@ -341,4 +346,72 @@ header ul li a{
     line-height: 130%;
     letter-spacing: 0.06em;
     font-family: Georgia, serif;
+}
+
+@media (max-width: 1279px) {
+    .petsPageContainer{
+        min-height: 877px;
+        width: 100%;
+        margin: 0 auto;
+    } 
+    .petsPageContent{
+        width: 708px;
+    }
+    .sliderPetsPage {
+        width: 100%;
+        gap: 12px; 
+        margin-inline: auto;
+    }  
+    .slider-container{
+        width: 630px;
+    }
+    .slider-track {
+        display: flex;
+        gap: 40px;
+        transition: transform 0.5s ease;
+    }
+}
+
+
+/* Секция как помочь Help */
+.helpPageContainer{
+    width: 100%;
+    min-height: 611px;  
+    background: var(--color-light-xl);
+}
+.helpPageContent{
+    margin-top: 80px;
+    margin-inline: auto;
+    width: var(--container-desktop);
+    height: 431px;
+    box-sizing: border-box;
+}
+.helpPageContent h3{
+    text-align: center;
+    margin: 0 auto;
+    font-family: Georgia, serif;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    color: var(--color-dark-l)
+}
+.helpPageContent div{
+    margin-bottom: 0;
+    margin-inline: auto;
+}
+.helpPageElement p{
+    margin-inline: auto;
+    font-size: 20px;
+    font-family: Georgia, serif;
+    text-align: center;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+} 
+.helpPageElement{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 120px 120px;
 }

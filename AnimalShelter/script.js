@@ -4,31 +4,79 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.querySelector('.sliderPetsPage-arrow-prev');
     const nextBtn = document.querySelector('.sliderPetsPage-arrow-next');
     
+    if (!track || !prevBtn || !nextBtn) return;
+
     let currentIndex = 0;
-    const slideWidth = 270 + 90; // 270px карточка + 90px gap
-    const slidesToShow = 3;
-
-    function updateSlider() {
-        track.style.transition = 'transform 0.5s ease';
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    
+    function getSlidesToShow() {
+        const width = window.innerWidth;
+        if (width >= 1280) return 3;
+        if (width >= 768) return 2;
+        return 1;
     }
-
-    // Вперёд - циклическое переключение
+    
+    function getSlideStep() {
+        const slide = document.querySelector('.slide');
+        if (!slide) return 270 + 90;
+        
+        const slideWidth = slide.offsetWidth;
+        const trackStyle = getComputedStyle(track);
+        const gap = parseInt(trackStyle.gap) || 90;
+        
+        return slideWidth + gap;
+    }
+    
+    function getMaxIndex() {
+        return Math.max(0, slides.length - getSlidesToShow());
+    }
+    
+    function updateSlider() {
+        const maxIndex = getMaxIndex();
+        const step = getSlideStep();
+        
+        track.style.transition = 'transform 0.5s ease';
+        track.style.transform = `translateX(-${currentIndex * step}px)`;
+        
+        updateButtons();
+    }
+    
+    function updateButtons() {
+        const maxIndex = getMaxIndex();
+        // Убираем disabled для бесконечной прокрутки
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex === maxIndex ? '0.5' : '1';
+    }
+    
+    // Обработчики событий с цикличной прокруткой
     nextBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % (slides.length - slidesToShow + 1);
+        const maxIndex = getMaxIndex();
+        
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+        } else {
+            // Достигли конца - возвращаемся в начало
+            currentIndex = 0;
+        }
         updateSlider();
     });
-
-    // Назад - циклическое переключение  
+    
     prevBtn.addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + (slides.length - slidesToShow + 1)) % (slides.length - slidesToShow + 1);
+        const maxIndex = getMaxIndex();
+        
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            // Находимся в начале - переходим в конец
+            currentIndex = maxIndex;
+        }
         updateSlider();
     });
-
+    
+    window.addEventListener('resize', function() {
+        currentIndex = Math.min(currentIndex, getMaxIndex());
+        updateSlider();
+    });
+    
     // Инициализация
     updateSlider();
-    console.log('Всего карточек:', slides.length);
-console.log('Текущая позиция:', currentIndex);
-
 });
-
