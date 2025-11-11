@@ -6,6 +6,7 @@
     --color-dark-3xl: #292929;
     --color-dark-xl: #4C4C4C;
     --color-dark-l: #545454;
+    --color-dark-m: #B2B2B2;
     --color-dark-s: #CDCDCD;
     /* Переменные для указания ширины */
     --container-desktop: 1280px;
@@ -397,21 +398,205 @@ header ul li a{
     color: var(--color-dark-l)
 }
 .helpPageContent div{
-    margin-bottom: 0;
     margin-inline: auto;
-}
-.helpPageElement p{
-    margin-inline: auto;
+    text-align: center;
     font-size: 20px;
     font-family: Georgia, serif;
-    text-align: center;
     line-height: 115%;
     letter-spacing: 0.06em;
     font-weight: 400;
 } 
-.helpPageElement{
+.helPageElements {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 120px 120px;
+    gap: 55px 120px;
+    margin-top: 60px;
+    width: 1100px;
+    justify-content: center
 }
+
+
+@media (max-width: 1279px) {
+    .helpPageContainer{
+        min-height: 779px;
+        padding: 0;
+        margin: 0;
+    }
+    .helpPageContent {
+        width: 100%;
+        max-width: var(--container-tablet);
+        box-sizing: border-box;
+    }
+    .helPageElements {
+        width: 630px; 
+        gap: 55px 60px; 
+    }
+    .helPageElement{
+        width: 170px;
+        height: 113px;
+    }
+}
+
+/* секция донат DONATION */
+.donationPageContainer{
+    width: 100%;
+    background: var(--color-light-l);
+    min-height: 462px;
+}
+.donationPageContent{
+    margin: auto;
+    padding-top: 80px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.donationPagePuppy{
+    height: 261px;
+    margin-right: 30px;
+}
+.donationPageInfo{
+    width: 380px;
+    text-align: left;
+}
+.donationPageInfo h3{
+    font-size: 35px;
+    font-family: Georgia, serif;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    margin:0 80px 0 0;
+    color: var(--color-dark-l);
+}
+.donationPageInfo h5{
+    font-size: 15px;
+    font-family: Georgia, serif;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    color: var(--color-dark-l);
+    margin: 20px 0;
+}
+.donationCreditCard{
+    background-color: var(--color-primary);
+    display: inline-flex;
+    border-radius: 9px;
+    padding: 10px 15px;
+    max-width: 349px; 
+    gap: 10px;
+    align-items: center; 
+}
+.donationCreditCard h4{
+    margin: 0; 
+    font-size: 20px;
+    font-family: Georgia, serif;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    white-space: nowrap;
+}
+.donationCreditCard a{
+    text-decoration: none;
+    color: var(--color-dark-l);
+}
+.donationPageInfo p{
+    color: var(--color-dark-m);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 4px; margin-top: 10px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+@media (max-width: 1279px) {
+    .donationPageContainer{
+        min-height: 783px;
+    }
+    .donationPageContent{
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+    .donationPagePuppy{
+        padding-top: 60px;
+}
+}
+
+
+
+/* ФУТЕР */
+
+.footer{
+    width: var(--container-desktop);
+    min-height: 350px;
+    background: url(images/maskMainPage.png), radial-gradient(circle at top left, #5B483A, #262425);
+    overflow: hidden;
+    position: relative;
+}
+.footer a, .footer h4{
+    text-decoration: none;
+    color: var(--color-primary);
+    margin-left: 20px; 
+    font-size: 20px;
+    font-family: Georgia, serif;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    align-items: center; 
+    min-height: 32px;
+}
+.footer h4{
+    margin: 0;
+}
+.footerContent{
+    width: 1200px;
+    height: 310px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-inline: auto;
+}
+.footerContacts{
+    width: 278px;
+}
+.footerLocations{
+    width: 303px;
+}
+.footerContacts h3, .footerLocations h3{
+    margin: 0; 
+    font-size: 35px;
+    font-family: Georgia, serif;
+    line-height: 130%;
+    letter-spacing: 0.058em;
+    font-weight: 400;
+    color: var(--color-light-xl)
+}
+.footerContactsMail, .footerContactsPhone, 
+.footerLocationsBoston, .footerLocationsLondon{
+    display: flex;
+    align-items: center; 
+}
+.footerContactsMail img, 
+.footerContactsPhone img,
+.footerLocationsBoston img,
+.footerLocationsLondon img {
+    align-self: center; 
+}
+.footerContactsPhone, .footerContactsMail{
+    padding-top: 40px;
+}
+.footerLocationsBoston{
+    padding-top: 34px;
+    margin: 0;
+
+}
+.footerLocationsLondon{
+    padding-top: 32px;
+}
+.footerLocations img{
+    width: 22px;
+    height: 32px;
+}
+
+
+
