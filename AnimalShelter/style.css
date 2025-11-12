@@ -14,10 +14,6 @@
     --container-mobile: 375px;
 }
 
-/* * { 
-    border: 1px solid red !important; 
-} */
-
 @media (max-width: 767px)  { /* Mobile */ }
 @media (max-width: 374px)  { /* Small Mobile */ }
 
@@ -26,18 +22,16 @@ body{
     background-color: #000;
 }
 /* Общиий контейнер для всей страницы */
+.burger-menu, .mobile-nav, .overlay {
+    display: none;
+}
+
 .mainContainer{
     width: var(--container-desktop);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center; 
-}
-@media (max-width: 1279px) {
-    .mainContainer {
-        width: 100%;
-        max-width: var(--container-tablet);
-    }
 }
 /* Контейнер стартовой страницы */
 .startPageConteiner{
@@ -47,13 +41,7 @@ body{
     overflow: hidden;
     position: relative;
 }
-@media (max-width: 1279px) {
-    .startPageConteiner{
-        min-height: 1165px;
-        width: 100%;
-        margin: 0 auto;
-    }
-}
+
 /* header */
 header {
     box-sizing: border-box;
@@ -63,12 +51,6 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-@media (max-width: 1279px) {
-      header {
-        width: auto;
-        margin: 30px 30px;}
-    }
-
 header a{
     width: 190px;
     line-height: 1.1;
@@ -90,14 +72,14 @@ header span:last-child{
     letter-spacing: 0.1em;
     margin-left: 4px; margin-top: 10px;
 }
-header nav ul {
+.desktop-nav ul {
     display: flex;
     gap: 35px; /* Расстояние между пунктами */
     list-style: none;
     margin: 0;
     padding: 0;
 }
-header ul li a{
+.desktop-nav ul li a{
     text-decoration: none;
     color: var(--color-light-xl);
     font-family: Arial, sans-serif;
@@ -109,7 +91,146 @@ header ul li a{
     color: var(--color-light-s);
     border-bottom: 3px var(--color-primary) solid;
 }
-
+/* Мобильная версия */
+@media (max-width: 767px) {
+    /* Скрываем десктопное меню */
+    .desktop-nav {
+        display: none;
+    }
+    .mainContainer {
+        width: 100%;
+        max-width: var(--container-mobile);
+    }
+    
+    /* Хедер для мобилки */
+    header {
+        width: 100%;
+        margin: 30px 10px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }  
+    /* Бургер-иконка */
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    .burger-menu span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--color-primary);
+        transition: all 0.3s ease;
+    }
+    
+    /* Мобильное меню */
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: var(--color-light-xl);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 100px 40px 0;
+        box-sizing: border-box;
+    }
+    
+    .mobile-nav.active {
+        right: 0;
+    }
+    
+    .mobile-nav ul {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .mobile-nav ul li a {
+        color: var(--color-dark-l) !important;
+        font-size: 32px !important;
+        font-family: Arial, sans-serif;
+    }
+    
+    /* Затемненный фон */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+    
+    .overlay.active {
+        display: block;
+    }
+    
+    /* Анимация бургера */
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Контент стартовой страницы для мобилки */
+    .startPageConteiner {
+        width: 100%;
+        min-height: 823px;
+        position: relative;
+    }
+    
+    .StartScreen-Container {
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px;
+        margin-top: 60px;
+    }
+    
+    .StartPageContent {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        text-align: center;
+    }
+    
+    .StartPageContent p:first-child {
+        padding-right: 0;
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    .StartPageContent p:nth-child(2) {
+        font-size: 15px;
+        margin: 40px 0;
+        text-align: center;
+    }
+    
+    .StartPageContent button {
+        margin-left: 0;
+        padding: 15px 40px;
+    }
+    
+    .StartScreenPuppy {
+        width: 260px;
+        height: 272px;
+        margin: 105px 0 0 0;
+    }
+}
 
 /* блок с текстом и щенком */
 .StartScreen-Container {
@@ -149,6 +270,9 @@ header ul li a{
 .StartScreenPuppy{
     margin-left: 42px;
 }
+
+
+/* Планшетная версия */
 @media (max-width: 1279px){
     .StartScreen-Container{
         top: 150px; left: 99px;
@@ -165,22 +289,38 @@ header ul li a{
         width: 569px; height: 593px;
         margin-top: 100px; margin-left: 70px;
     }
+    .startPageConteiner{
+        min-height: 1165px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .mainContainer {
+        width: 100%;
+        max-width: var(--container-tablet);
+    }
+    header {
+        width: auto;
+        margin: 30px 30px;
+    }
 }  
 
-/* Страница about page */
+/* Мобильная версия */
+@media (max-width: 767px) {
+    /* Скрываем десктопное меню */
+    .aboutPageContainer {
+        display: none;
+    }
+}
+
+
+
+/* Страница about page laptop */
 .aboutPageContainer{
     width: 100%;
     margin: 0 auto;
     background: var(--color-light-xl);
     min-height: 588px;
 }
-@media (max-width: 1279px){
-    .aboutPageContainer{
-        width: 100%;
-        min-height: 1048px;
-    }
-}
-
 .aboutPageContent{
     width: 1200px;
     box-sizing: border-box;
@@ -188,34 +328,14 @@ header ul li a{
     height: 408px;
     display: flex;
 }
-@media (max-width: 1279px){
-    .aboutPageContent{
-        width: 437px; height: 868px;
-        flex-direction: column-reverse;
-        margin: 80px auto;
-    }
-}
-
 .aboutPageContent img{
     margin-left: 175px;
     width: 300px; height: 408px;
 }
-@media (max-width: 1279px) {
-    .aboutPageContent img{
-        margin: 80px auto 0;
-    } 
-}
-
 .aboutPageContent div{
     width: 430px; height: 380px;
     margin-left: 120px; margin-top: 14px;
 }
-@media (max-width: 1279px) {
-    .aboutPageContent div{
-        margin: 0 auto;
-    } 
-}
-
 .aboutPageContent div h2{
     width: 370px; height: 90px;
     font-family: Georgia, serif;
@@ -235,6 +355,25 @@ header ul li a{
 }
 .aboutPageContent div p:nth-child(3){
     margin-top: 25px;
+}
+
+/* Страница about page tablet */
+@media (max-width: 1279px){
+    .aboutPageContainer{
+        width: 100%;
+        min-height: 1048px;
+    }
+    .aboutPageContent{
+        width: 437px; height: 868px;
+        flex-direction: column-reverse;
+        margin: 80px auto;
+    }
+    .aboutPageContent img{
+        margin: 80px auto 0;
+    } 
+    .aboutPageContent div{
+        margin: 0 auto;
+    } 
 }
 
 
@@ -372,9 +511,16 @@ header ul li a{
         transition: transform 0.5s ease;
     }
 }
+/* Мобильная версия */
+@media (max-width: 767px) {
+    /* Скрываем десктопное меню */
+    .petsPageContainer {
+        display: none;
+    }
+}
 
 
-/* Секция как помочь Help */
+/* Секция как помочь Help laptop */
 .helpPageContainer{
     width: 100%;
     min-height: 611px;  
@@ -415,7 +561,7 @@ header ul li a{
     justify-content: center
 }
 
-
+/* Секция как помочь Help tablet */
 @media (max-width: 1279px) {
     .helpPageContainer{
         min-height: 779px;
@@ -437,7 +583,17 @@ header ul li a{
     }
 }
 
-/* секция донат DONATION */
+/* Секция как помочь Help mobile */
+@media (max-width: 767px) {
+    /* Скрываем десктопное меню */
+    .helpPageContainer {
+        display: none;
+    }
+}
+
+
+
+                            /* секция донат DONATION LAPTOP*/
 .donationPageContainer{
     width: 100%;
     background: var(--color-light-l);
@@ -508,7 +664,7 @@ header ul li a{
     font-style: italic;
     margin-top: 20px;
 }
-
+                            /* секция донат DONATION TABLET*/
 @media (max-width: 1279px) {
     .donationPageContainer{
         min-height: 783px;
@@ -521,11 +677,17 @@ header ul li a{
         padding-top: 60px;
 }
 }
+                            /* секция донат DONATION MOBILE*/
+@media (max-width: 767px) {
+    /* Скрываем десктопное меню */
+    .donationPageContainer {
+        display: none;
+    }
+}   
 
 
 
-/* ФУТЕР */
-
+                            /* FOOTER LAPTOP*/
 .footer{
     width: var(--container-desktop);
     min-height: 350px;
@@ -597,6 +759,51 @@ header ul li a{
     width: 22px;
     height: 32px;
 }
+ @media (max-width: 1279px) {
+    .footer{
+        width: 100%;
+        min-height: 639px;
+    }    
+    .footerContent{
+        width: 100%;
+        height: auto;
+        margin-top: 30px;
+        display: grid;
+        grid-template-areas: 
+            "contacts locations"
+            "puppy puppy";
+        grid-template-rows: auto 1fr;
+        gap: 60px;
+        justify-content: center;
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+    .footerContacts {
+        grid-area: contacts;
+        width: 100%;
+    }
+    .footerLocations {
+        grid-area: locations;
+        width: 100%;
+    }
+    .footerPuppy {
+        grid-area: puppy;
+        justify-self: center;
+        max-width: 300px; /* Подгони под макет */
+    }
+    .footerContacts{
+        width: 278px;
+    }
+    .footerLocations{
+        width: 303px;
+    }
+}
 
-
+/* Мобильная версия */
+@media (max-width: 767px) {
+    /* Скрываем десктопное меню */
+    .footer {
+        display: none;
+    }
+}  
 
