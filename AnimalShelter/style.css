@@ -95,140 +95,9 @@ header span:last-child{
 @media (max-width: 767px) {
     /* Скрываем десктопное меню */
     .desktop-nav {
+        display: none;}
+    .startPageConteiner{
         display: none;
-    }
-    .mainContainer {
-        width: 100%;
-        max-width: var(--container-mobile);
-    }
-    
-    /* Хедер для мобилки */
-    header {
-        width: 100%;
-        margin: 30px 10px;
-        padding: 0 10px;
-        box-sizing: border-box;
-    }  
-    /* Бургер-иконка */
-    .burger-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-    
-    .burger-menu span {
-        display: block;
-        height: 2px;
-        width: 100%;
-        background-color: var(--color-primary);
-        transition: all 0.3s ease;
-    }
-    
-    /* Мобильное меню */
-    .mobile-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 320px;
-        height: 100vh;
-        background: var(--color-light-xl);
-        transition: right 0.3s ease;
-        z-index: 1000;
-        padding: 100px 40px 0;
-        box-sizing: border-box;
-    }
-    
-    .mobile-nav.active {
-        right: 0;
-    }
-    
-    .mobile-nav ul {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .mobile-nav ul li a {
-        color: var(--color-dark-l) !important;
-        font-size: 32px !important;
-        font-family: Arial, sans-serif;
-    }
-    
-    /* Затемненный фон */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        display: none;
-    }
-    
-    .overlay.active {
-        display: block;
-    }
-    
-    /* Анимация бургера */
-    .burger-menu.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-    
-    .burger-menu.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .burger-menu.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-    
-    /* Контент стартовой страницы для мобилки */
-    .startPageConteiner {
-        width: 100%;
-        min-height: 823px;
-        position: relative;
-    }
-    
-    .StartScreen-Container {
-        position: static;
-        flex-direction: column;
-        align-items: center;
-        padding: 0 10px;
-        margin-top: 60px;
-    }
-    
-    .StartPageContent {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        text-align: center;
-    }
-    
-    .StartPageContent p:first-child {
-        padding-right: 0;
-        font-size: 25px;
-        text-align: center;
-    }
-    
-    .StartPageContent p:nth-child(2) {
-        font-size: 15px;
-        margin: 40px 0;
-        text-align: center;
-    }
-    
-    .StartPageContent button {
-        margin-left: 0;
-        padding: 15px 40px;
-    }
-    
-    .StartScreenPuppy {
-        width: 260px;
-        height: 272px;
-        margin: 105px 0 0 0;
     }
 }
 
@@ -304,15 +173,6 @@ header span:last-child{
     }
 }  
 
-/* Мобильная версия */
-@media (max-width: 767px) {
-    /* Скрываем десктопное меню */
-    .aboutPageContainer {
-        display: none;
-    }
-}
-
-
 
 /* Страница about page laptop */
 .aboutPageContainer{
@@ -374,6 +234,41 @@ header span:last-child{
     .aboutPageContent div{
         margin: 0 auto;
     } 
+}
+/* Страница about page mobile */
+
+@media (max-width: 767px){
+    .aboutPageContainer{
+        width: 100%;
+        min-height: 974px;
+        padding-top: 42px; /* ← Добавляем отступ контейнеру */
+    }
+    .aboutPageContent{
+        width: 300px; 
+        height: 890px; /* ← Меняем на auto */
+        flex-direction: column-reverse;
+        margin: 0 auto; /* ← Теперь 0 работает */
+    }
+    .aboutPageContent img{
+        margin: 0 auto; /* ← Убираем лишние отступы */
+        width: 260px; /* ← Подгоняем под мобилку */
+        height: auto;
+        margin-top: 20px;
+    } 
+    .aboutPageContent div{
+        width: 300px; 
+        height: auto; /* ← Меняем на auto */
+        margin: 0 auto;
+    } 
+    .aboutPageContent div h2{
+        width: 100%; /* ← Занимает всю ширину */
+        letter-spacing: 0.056em;
+        text-align: center;
+        margin-bottom: 25px; /* ← Добавляем отступ снизу */
+    }
+    .aboutPageContent div p{
+        margin: 0 0 22px 0; /* ← Контролируем отступы */
+    }
 }
 
 
