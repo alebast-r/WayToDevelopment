@@ -235,46 +235,49 @@ header span:last-child{
         margin: 0 auto;
     } 
 }
-/* Страница about page mobile */
+                        /* ABOUT PAGE MOBILE */
 
 @media (max-width: 767px){
     .aboutPageContainer{
         width: 100%;
         min-height: 974px;
-        padding-top: 42px; /* ← Добавляем отступ контейнеру */
+        padding-top: 42px; 
     }
     .aboutPageContent{
         width: 300px; 
-        height: 890px; /* ← Меняем на auto */
+        height: 890px; 
         flex-direction: column-reverse;
-        margin: 0 auto; /* ← Теперь 0 работает */
+        margin: 0 auto; 
     }
     .aboutPageContent img{
-        margin: 0 auto; /* ← Убираем лишние отступы */
-        width: 260px; /* ← Подгоняем под мобилку */
+        margin: 0 auto; 
+        width: 260px; 
         height: auto;
         margin-top: 20px;
     } 
     .aboutPageContent div{
         width: 300px; 
-        height: auto; /* ← Меняем на auto */
+        height: auto;
         margin: 0 auto;
     } 
     .aboutPageContent div h2{
-        width: 100%; /* ← Занимает всю ширину */
-        letter-spacing: 0.056em;
+        width: 100%;
+        letter-spacing: 0.08em;
         text-align: center;
-        margin-bottom: 25px; /* ← Добавляем отступ снизу */
+        margin-bottom: 25px; 
+        font-size: 25px;
+        line-height: 130%;
     }
     .aboutPageContent div p{
-        margin: 0 0 22px 0; /* ← Контролируем отступы */
+        margin: 0 0 22px 0; 
     }
 }
 
 
 
 
-/* Страница petsPage */
+                            /* PETS PAGE LAPTOP */
+
 .petsPageContainer{
     width: 100%;
     margin: 0 auto;
@@ -308,7 +311,7 @@ header span:last-child{
 }
 
 .slider-container {
-    width: 990px; /* 270px × 3 + 90px × 2 gap */
+    width: 990px; 
     overflow: hidden;
     margin: 0 auto;
 }
@@ -383,6 +386,9 @@ header span:last-child{
     font-family: Georgia, serif;
 }
 
+
+                        /* PETS PAGE TABLET */
+
 @media (max-width: 1279px) {
     .petsPageContainer{
         min-height: 877px;
@@ -406,14 +412,70 @@ header span:last-child{
         transition: transform 0.5s ease;
     }
 }
-/* Мобильная версия */
+                        /* PETS PAGE MOBILE */
+/* PETS PAGE MOBILE */
 @media (max-width: 767px) {
-    /* Скрываем десктопное меню */
-    .petsPageContainer {
-        display: none;
+    .petsPageContainer{
+        min-height: 791px;
+        width: 100%;
+        margin: 0 auto;
+    } 
+    .petsPageContent{
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        margin-top: 42px;
+    }
+    .petsPageContent h3 {
+        width: 100%;
+        font-size: 25px;
+        height: auto;
+        margin-bottom: 42px;
+    }
+    .sliderPetsPage {
+        width: 100%;
+        flex-direction: column; /* ← Основная колонка */
+        gap: 20px; 
+        margin: 0 auto 42px;
+        height: auto;
+        align-items: center;
+    }  
+    .slider-container{
+        width: 270px;
+        order: 1; /* ← Карточка первой */
+    }
+    .slider-track {
+        gap: 20px;
+    }
+    .slide {
+        min-width: 270px;
+    }
+    
+    /* Контейнер для кнопок */
+    .sliderPetsPage::after {
+        content: '';
+        display: block;
+        order: 2; /* ← Кнопки второй */
+        width: 100%;
+    }
+    
+    .sliderPetsPage-arrow-prev,
+    .sliderPetsPage-arrow-next {
+        position: static;
+        order: 2; /* ← Обе кнопки во втором порядке */
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+        display: block;
+        margin: 0 40px; /* ← Расстояние между кнопками */
+
+    }
+    
+    .GetToKnowTheRest{
+        margin: 42px auto;
+        padding: 15px 40px;
     }
 }
-
 
 /* Секция как помочь Help laptop */
 .helpPageContainer{
@@ -482,7 +544,39 @@ header span:last-child{
 @media (max-width: 767px) {
     /* Скрываем десктопное меню */
     .helpPageContainer {
-        display: none;
+        min-height: 760px;
+        width: 100%;
+    }
+    .helpPageContent {
+        width: 100%;
+        margin-top: 42px;
+        max-width: var(--container-mobile);
+        box-sizing: border-box;
+    }
+    .helPageElements {
+        width: 290px; 
+        gap: 30px; 
+        margin: 42px auto 0;
+        flex-wrap: wrap;
+    }
+    .helPageElement{
+        width: 130px;
+        height: 87px;
+    }
+    .helpPageContent h3{
+        font-size: 25px;
+    }
+    .helPageElement img{
+        width: 50px;
+        height: 50px;
+    }
+    .helPageElement p{
+        margin-top: 20px;
+        font-size: 15px;
+        line-height: 110%;
+    }
+    #helpPageLastElement{
+        margin-left: 0;
     }
 }
 
