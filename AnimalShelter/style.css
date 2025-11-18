@@ -668,9 +668,62 @@ header span:last-child{
 }
                             /* секция донат DONATION MOBILE*/
 @media (max-width: 767px) {
-    /* Скрываем десктопное меню */
-    .donationPageContainer {
-        display: none;
+    .donationPageContainer{
+        min-height: auto;
+        display: flex;
+        justify-content: center; 
+    }
+    .donationPageContent{
+        flex-direction: column-reverse;
+        padding-top: 42px;
+        width: 100%;
+        margin: auto;
+        align-items: center;
+    }
+    .donationPagePuppy{
+        width: 260px;
+        height: 135.5px;
+        margin: 42px 0 42px;
+        padding: 0;
+    }
+    .donationPageInfo{
+        width: 320px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .donationPageInfo h3{
+        font-size: 25px;
+        margin: 0 auto;
+        width: 220px;
+    }
+    .donationPageInfo h5{
+        font-size: 15px;
+        line-height: 110%;
+        letter-spacing: 0;
+        margin: 20px 0;
+    }
+    .donationCreditCard{
+        background-color: var(--color-primary);
+        display: inline-flex;
+        border-radius: 9px;
+        padding: 10px 15px;
+        max-width: 300px; 
+        gap: 10px;
+        align-items: center; 
+        justify-content: center;
+    }
+    .donationCreditCard h4{
+        margin: 0; 
+        font-size: 15px;
+        line-height: 110%;
+        white-space: nowrap;
+    }
+    .donationPageInfo p{
+        margin: 20px 0 0 0; 
+        width: 280px;
+        text-align: center;
     }
 }   
 
