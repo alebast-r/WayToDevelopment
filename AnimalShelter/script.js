@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         track.style.transition = 'transform 0.5s ease';
         track.style.transform = `translateX(-${currentIndex * step}px)`;
         
-        updateButtons();
+        // updateButtons();
     }
     
     function updateButtons() {
