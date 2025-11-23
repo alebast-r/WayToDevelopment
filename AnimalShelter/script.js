@@ -81,3 +81,38 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSlider();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.getElementById('burgerMenu');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.createElement('div');
+    
+    // Создаем затемненный фон
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
+    
+    // Функция открытия/закрытия меню
+    function toggleMenu() {
+        burgerMenu.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = burgerMenu.classList.contains('active') ? 'hidden' : '';
+    }
+    
+    // Клик по бургеру
+    burgerMenu.addEventListener('click', toggleMenu);
+    
+    // Клик по overlay (закрытие)
+    overlay.addEventListener('click', toggleMenu);
+    
+    // Клик по ссылкам в меню (закрытие + активное состояние)
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // Убираем active у всех ссылок
+            mobileLinks.forEach(l => l.classList.remove('active'));
+            // Добавляем active к нажатой ссылке
+            this.classList.add('active');
+            toggleMenu(); // ← Закрываем меню
+        });
+    });
+});

@@ -14,9 +14,6 @@
     --container-mobile: 375px;
 }
 
-@media (max-width: 767px)  { /* Mobile */ }
-@media (max-width: 374px)  { /* Small Mobile */ }
-
 body{
     margin: 0; padding: 0;
     background-color: #000;
@@ -25,6 +22,7 @@ body{
 .burger-menu, .mobile-nav, .overlay {
     display: none;
 }
+
 
 .mainContainer{
     width: var(--container-desktop);
@@ -90,15 +88,6 @@ header span:last-child{
     padding-bottom: 4px;
     color: var(--color-light-s);
     border-bottom: 3px var(--color-primary) solid;
-}
-/* Мобильная версия */
-@media (max-width: 767px) {
-    /* Скрываем десктопное меню */
-    .desktop-nav {
-        display: none;}
-    .startPageConteiner{
-        display: none;
-    }
 }
 
 /* блок с текстом и щенком */
@@ -172,9 +161,178 @@ header span:last-child{
         margin: 30px 30px;
     }
 }  
+                                /* Главная страница Мобильная версия */
+@media (max-width: 767px) {
+    .desktop-nav {
+        display: none;}
+    .StartScreenPuppy{
+        width: 260px;
+        height: auto;
+        margin: 105px 0 0 40px;
+    }
+    .startPageConteiner{
+        width: 100%;
+        padding-inline: 10px;
+        min-height: 823px;
+        box-sizing: border-box;
+    }
+    .StartScreen-Container {
+        position: static; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 60px;
+        padding: 0;
+    }
+    .StartPageContent {
+        width: 100%;
+        max-width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #titleStartPage{
+        font-size: 25px;
+        letter-spacing: 0.06em;
+        text-align: center;
+        padding: 0;
+        width: 250px;
+    }
+    #subtitleStartPage{
+        font-size: 15px;
+        letter-spacing: 0;
+        text-align: center;
+        margin: 42px 0;
+    }
+    .StartPageContent button{
+        margin: 0;
+    }
+    header {
+        width: 100%;
+        margin: 30px 0;
+        padding: 0 10px;
+    }
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+    .burger-menu span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--color-primary);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    /* Анимация */
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* ОТКРЫТЫЙ БУРГЕР */
+    .mobile-nav.active {
+        right: 0;
+    }
+    .mobile-nav {
+        display: block; 
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: var(--color-dark-3xl);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 100px 40px 0;
+        box-sizing: border-box;
+        justify-content: center; /* ← Вертикальное центрирование */
+        align-items: center;     /* ← Горизонтальное центрирование */
+        padding: 0 !important;      /* ← Убираем верхний паддинг */
+        margin: 0;
+    }
+    
+    .mobile-nav.active {
+        right: 0;
+    }
+    
+    .mobile-nav ul {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        flex-direction: column;
+        gap: 42px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        width: 100%
+    }
+    
+        /* Общие стили для ссылок меню */
+    .mobile-nav ul li a {
+        color: var(--color-dark-s) !important; /* Неактивное состояние */
+        font-size: 32px !important;
+        font-family: Arial, sans-serif;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent; /* Прозрачное подчеркивание */
+    }
+        .mobile-nav ul li {
+        margin-bottom: 42px; /* ← Отступ между кнопками */
+        text-align: center;
+    }
+    /* Активное состояние (после клика) */
+    .mobile-nav ul li a.active {
+        color: var(--color-light-s) !important;
+        border-bottom: 2px solid var(--color-primary); /* Подчеркивание */
+    }
+
+    /* Ховер-эффект (опционально) */
+    .mobile-nav ul li a:hover {
+        color: var(--color-light-s) !important;
+    }
+    
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+    .overlay.active {
+        display: block;
+    }
+}
 
 
-/* Страница about page laptop */
+
+                            /* Страница about page laptop */
 .aboutPageContainer{
     width: 100%;
     margin: 0 auto;
@@ -217,7 +375,7 @@ header span:last-child{
     margin-top: 25px;
 }
 
-/* Страница about page tablet */
+                                /* Страница about page tablet */
 @media (max-width: 1279px){
     .aboutPageContainer{
         width: 100%;
@@ -235,7 +393,7 @@ header span:last-child{
         margin: 0 auto;
     } 
 }
-                        /* ABOUT PAGE MOBILE */
+                                /* ABOUT PAGE MOBILE */
 
 @media (max-width: 767px){
     .aboutPageContainer{
@@ -276,7 +434,7 @@ header span:last-child{
 
 
 
-                            /* PETS PAGE LAPTOP */
+                                  /* PETS PAGE LAPTOP */
 
 .petsPageContainer{
     width: 100%;
@@ -387,7 +545,7 @@ header span:last-child{
 }
 
 
-                        /* PETS PAGE TABLET */
+                                  /* PETS PAGE TABLET */
 
 @media (max-width: 1279px) {
     .petsPageContainer{
@@ -412,8 +570,8 @@ header span:last-child{
         transition: transform 0.5s ease;
     }
 }
-                        /* PETS PAGE MOBILE */
-/* PETS PAGE MOBILE */
+                                /* PETS PAGE MOBILE */
+
 @media (max-width: 767px) {
     .petsPageContainer{
         min-height: 791px;
@@ -447,7 +605,7 @@ header span:last-child{
     .sliderPetsPage-arrow-prev,
     .sliderPetsPage-arrow-next {
         position: absolute;
-        bottom: 100px; /* ↑ Поднимаем выше */
+        bottom: 100px;
         width: 52px;
         height: 52px;
         border: 2px solid var(--color-primary);
@@ -471,7 +629,7 @@ header span:last-child{
     }
 }
 
-/* Секция как помочь Help laptop */
+                        /* Секция как помочь Help laptop */
 .helpPageContainer{
     width: 100%;
     min-height: 611px;  
@@ -512,7 +670,7 @@ header span:last-child{
     justify-content: center
 }
 
-/* Секция как помочь Help tablet */
+                                        /* Секция как помочь Help tablet */
 @media (max-width: 1279px) {
     .helpPageContainer{
         min-height: 779px;
@@ -534,7 +692,7 @@ header span:last-child{
     }
 }
 
-/* Секция как помочь Help mobile */
+                                       /* Секция как помочь Help mobile */
 @media (max-width: 767px) {
     /* Скрываем десктопное меню */
     .helpPageContainer {
@@ -772,7 +930,7 @@ header span:last-child{
     .footerPuppy {
         grid-area: puppy;
         justify-self: center;
-        max-width: 300px; /* Подгони под макет */
+        max-width: 300px;
     }
     .footerContacts{
         width: 278px;
