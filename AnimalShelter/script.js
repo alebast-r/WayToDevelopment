@@ -116,3 +116,123 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// В конец script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const petsGrid = document.querySelector('.petsGrid');
+    const pageNumbersContainer = document.querySelector('.pageNumbers');
+    const prevBtn = document.querySelector('.prevBtn');
+    const nextBtn = document.querySelector('.nextBtn');
+    const firstBtn = document.querySelector('.firstBtn');
+    const lastBtn = document.querySelector('.lastBtn');
+    
+    if (!petsGrid || !pageNumbersContainer) return;
+    
+    // Все карточки
+    const allCards = Array.from(document.querySelectorAll('.petCard'));
+    let currentPage = 1;
+    let cardsPerPage = 8; // По умолчанию для десктопа
+    
+    // Сколько карточек показывать в зависимости от ширины
+    function getCardsPerPage() {
+        const width = window.innerWidth;
+        if (width >= 1280) return 8; // 4x2
+        if (width >= 768) return 6;  // 2x3
+        return 3;                    // 1x3
+    }
+    
+    // Сколько всего страниц
+    function getTotalPages() {
+        return Math.ceil(allCards.length / cardsPerPage);
+    }
+    
+    // Показать карточки для текущей страницы
+    function showCurrentPage() {
+        cardsPerPage = getCardsPerPage();
+        const totalPages = getTotalPages();
+        
+        // Скрываем все карточки
+        allCards.forEach(card => card.style.display = 'none');
+        
+        // Показываем карточки для текущей страницы
+        const startIndex = (currentPage - 1) * cardsPerPage;
+        const endIndex = startIndex + cardsPerPage;
+        
+        allCards.slice(startIndex, endIndex).forEach(card => {
+            card.style.display = 'block';
+        });
+        
+        // Обновляем пагинацию
+        updatePagination(totalPages);
+        updateButtons(totalPages);
+      
+        const title = document.querySelector('.ourPetsContent h1');
+        if (title) {
+            title.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest' 
+            });
+        }
+    }
+    
+    // Обновить номера страниц
+    function updatePagination(totalPages) {
+        pageNumbersContainer.innerHTML = '';
+        
+        const pageBtn = document.createElement('button');
+        pageBtn.className = 'pageNumber active'; // Только этот класс
+        pageBtn.textContent = currentPage;
+        // Не добавляем disabled - вместо этого pointer-events: none в CSS
+        
+        pageNumbersContainer.appendChild(pageBtn);
+    }
+    
+    // Обновить состояние кнопок
+    function updateButtons(totalPages) {
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+        firstBtn.disabled = currentPage === 1;
+        lastBtn.disabled = currentPage === totalPages;
+    }
+    
+    // Обработчики кнопок
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            showCurrentPage();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < getTotalPages()) {
+            currentPage++;
+            showCurrentPage();
+        }
+    });
+    
+    firstBtn.addEventListener('click', () => {
+        currentPage = 1;
+        showCurrentPage();
+    });
+    
+    lastBtn.addEventListener('click', () => {
+        currentPage = getTotalPages();
+        showCurrentPage();
+    });
+    
+    // При изменении размера окна
+    window.addEventListener('resize', function() {
+        const oldCardsPerPage = cardsPerPage;
+        cardsPerPage = getCardsPerPage();
+        
+        // Если изменилось количество карточек на странице, пересчитываем
+        if (oldCardsPerPage !== cardsPerPage) {
+            const firstCardIndex = (currentPage - 1) * oldCardsPerPage;
+            currentPage = Math.floor(firstCardIndex / cardsPerPage) + 1;
+            showCurrentPage();
+        }
+    });
+    
+    // Инициализация
+    showCurrentPage();
+});

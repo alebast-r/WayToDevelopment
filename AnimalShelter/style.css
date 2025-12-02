@@ -1,4 +1,5 @@
 :root {
+    --color-primary-light: #FDDCC4;
     --color-primary: #F1CDB3;
     --color-light-xl: #FFFFFF;
     --color-light-l: #F6F6F6;
@@ -127,15 +128,23 @@ header span:last-child{
     margin: 40px 0;
     line-height: 160%;
 }
-.StartPageContent button{
+.button-link {
+    display: inline-block;
     padding: 15px 45px;
-    background: var(--color-primary);
-    border-radius: 100px; border: none;
+    background: var(--color-primary-light);
+    border-radius: 100px;
+    border: none;
     font-size: 17px;
     font-family: Georgia, serif;
     line-height: 130%;
     letter-spacing: 0.06em;
+    text-decoration: none;
     color: var(--color-dark-3xl);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.button-link:hover{
+    background: var(--color-primary)
 }
 .StartScreenPuppy{
     margin-left: 42px;
@@ -171,6 +180,11 @@ header span:last-child{
     header {
         width: auto;
         margin: 30px 30px;
+    }
+    .button-link{
+        margin: 0 auto; 
+        display: block; 
+        width: fit-content; 
     }
 }  
 
@@ -311,7 +325,7 @@ header span:last-child{
         padding-bottom: 4px;
         border-bottom: 2px solid transparent;
     }
-        .mobile-nav ul li {
+    .mobile-nav ul li {
         margin-bottom: 42px;
         text-align: center;
     }
@@ -453,6 +467,7 @@ header span:last-child{
 .petsPageContent{
     margin-top: 80px; margin-inline: auto;
     width: 1200px; height: 697px;
+    text-align: center;
 }
 
 .petsPageContent h3{
@@ -539,16 +554,27 @@ header span:last-child{
 .GetToKnowTheRest{
     display: block;
     margin: 60px auto;
-    padding: 15px 45px;
+    padding: 15px 49px;
     border-radius: 100px;
     border: none;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-light);
     color: var(--color-dark-3xl);
     font-weight: 400;
     font-size: 17px;
     line-height: 130%;
     letter-spacing: 0.06em;
     font-family: Georgia, serif;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    width: fit-content;
+    margin: 0;
+
+}   
+.GetToKnowTheRest:hover{
+    background-color: var(--color-primary);
 }
 
         /* ========================= PETS-TABLET ========================= */
@@ -626,13 +652,15 @@ header span:last-child{
     .sliderPetsPage-arrow-prev {
         left: 50%;
         transform: translateX(-90px);
+        margin-bottom: 10px;
     }
     .sliderPetsPage-arrow-next {
         left: 50%;
         transform: translateX(40px);
+        margin-bottom: 10px;
     }
     .GetToKnowTheRest{
-        margin: 120px auto 42px;
+        margin: 50px auto 40px;
         padding: 15px 40px;
     }
 }
@@ -1023,3 +1051,264 @@ header span:last-child{
         padding-top: 0;
     }
 }
+
+
+
+
+
+
+
+
+        /* ==================== OUR PETS HEADER ==================== */
+.our-pets-header-wrapper {
+    width: 100%;
+    background: var(--color-light-xl);
+}
+.our-pets-header-wrapper .our-pets-header {
+    width: 1200px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#CozyHouse{
+    color: var(--color-dark-l);
+}
+#ShelterForPets{
+    color: var(--color-dark-3xl);
+}
+
+
+
+
+.our-pets-header-wrapper #desktop-nav a{
+    color: var(--color-dark-l);
+}
+/* Hover эффект для десктопного меню */
+
+.our-pets-header-wrapper .desktop-nav a:hover {
+    border-bottom: 3px solid var(--color-primary);
+}
+.our-pets-header-wrapper .burger-menu span {
+    background-color: #000000;
+}
+.our-pets-header-wrapper .desktop-nav ul li a:hover {
+    color: var(--color-dark-3xl) !important;
+}
+
+
+
+@media (max-width: 1279px) {
+    .our-pets-header-wrapper .our-pets-header {
+        width: auto;
+        margin: 30px 30px;
+    }
+}
+@media (max-width: 767px) {
+    .our-pets-header-wrapper .our-pets-header {
+        width: 100%;
+        margin: 30px 0;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+}
+
+
+        /* ==================== OUR PETS PAGE ==================== */
+.ourPetsContainer {
+    background: var(--color-light-l);
+    padding: 80px 0 100px;
+    width: 100%;
+}
+
+.ourPetsContent {
+    width: var(--container-desktop);
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ourPetsContent h1 {
+    font-size: 35px;
+    font-family: Georgia, serif;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
+    margin: 0 0 60px 0;
+    font-weight: 400;
+}
+
+/* Сетка карточек - десктоп 4x2 */
+.petsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 40px;
+    margin: 0 auto 60px;
+    max-width: 1200px;
+}
+
+.petCard {
+    background: var(--color-light-s);
+    border-radius: 9px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.petCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.petCard img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.petCard h4 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin: 30px 0;
+    color: var(--color-dark-l);
+    font-weight: 400;
+}
+
+.learnMoreBtn {
+    border: 2px solid var(--color-primary);
+    background: var(--color-light-s);
+    border-radius: 100px;
+    padding: 15px 45px;
+    font-size: 17px;
+    font-family: Georgia, serif;
+    color: var(--color-dark-l);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.learnMoreBtn:hover {
+    background: var(--color-primary);
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.pageBtn {
+    width: 52px;
+    height: 52px;
+    background: var(--color-light-s);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    transition: all 0.3s ease;
+}
+
+.pageBtn:hover {
+    
+    
+    background: var(--color-primary);
+}
+
+.pageBtn.active {
+    background: var(--color-light-s);
+    border-color: var(--color-primary);
+    cursor: default;
+}
+
+.pageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Контейнер номеров страниц */
+.pageNumbers {
+    display: flex;
+    gap: 10px;
+    border: none;
+    background: none;
+}
+
+/* Кнопка страницы */
+.pageNumber {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-primary);
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    transition: all 0.3s ease;
+
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border-style: solid;
+}
+
+
+.pageNumber:hover:not(.active) {
+    background: var(--color-light-s);
+}
+
+.pageNumber.active {
+    background: var(--color-light-s);
+    border-color: var(--color-primary);
+    color: var(--color-dark-l);
+    pointer-events: none;
+}
+
+/* Планшет: 2x3 */
+@media (max-width: 1279px) {
+    .ourPetsContent {
+        width: 100%;
+        max-width: var(--container-tablet);
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+    
+    .petsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 580px;
+    }
+}
+
+/* Мобилка: 1x3 */
+@media (max-width: 767px) {
+    .ourPetsContainer {
+        padding: 42px 0;
+    }
+    
+    .ourPetsContent {
+        max-width: var(--container-mobile);
+        padding: 0 10px;
+    }
+    
+    .ourPetsContent h1 {
+        font-size: 25px;
+        margin-bottom: 42px;
+    }
+    
+    .petsGrid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 270px;
+        margin-bottom: 42px;
+    }
+    
+    .pagination {
+        gap: 10px;
+        margin-top: 42px;
+    }
+}
+
