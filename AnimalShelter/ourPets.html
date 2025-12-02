@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Pets - Animal Shelter</title>
+</head>
+<body>
+    <div class="mainContainer">
+        <!-- ХЕДЕР -->
+         <div class="header-wrapper our-pets-header-wrapper">
+            <header class="our-pets-header">
+                <a href="#">
+                    <span id="CozyHouse">Cozy House</span>
+                    <span id="ShelterForPets">Shelter for pets in Boston</span>
+                </a>
+                <nav class="desktop-nav" id="desktop-nav">
+                    <ul>
+                        <li><a href="main.html#about">About the shelter</a></li>
+                        <li><a class="active" href="main.html#pets">Our pets</a></li>
+                        <li><a href="main.html#help">Help the shelter</a></li>
+                        <li><a href="main.html#contacts">Contacts</a></li>
+                    </ul>
+                </nav>
+                <nav class="mobile-nav" id="mobileNav">
+                    <ul>
+                        <li><a href="main.html#about">About the shelter</a></li>
+                        <li><a class="active" href="main.html#pets">Our pets</a></li>
+                        <li><a href="main.html#help">Help the shelter</a></li>
+                        <li><a href="main.html#contacts">Contacts</a></li>
+                    </ul>
+                </nav>
+                <div class="burger-menu" id="burgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </header>
+        </div>
+
+        <!-- ОСНОВНОЙ КОНТЕНТ OUR PETS -->
+        <section class="ourPetsContainer">
+            <div class="ourPetsContent">
+                <h1>Our friends who<br>are looking for a house</h1>
+                
+                <div class="petsGrid">
+                        <!-- 1 строка -->
+                    <div class="petCard">
+                        <img src="images/Katrine_img.png" alt="Katrine">
+                        <h4>Katrine</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    <div class="petCard">
+                        <img src="images/Jenifer_img.png" alt="Jennifer">
+                        <h4>Jennifer</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    <div class="petCard">
+                        <img src="images/Woody_img.png" alt="Woody">
+                        <h4>Woody</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    <div class="petCard">
+                        <img src="images/Scarlett.png" alt="Scarlett">
+                        <h4>Scarlett</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    
+                        <!-- 2 строка -->
+                    <div class="petCard">
+                        <img src="images/Katrine.png" alt="Katrine">
+                        <h4>Katrine</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    <div class="petCard">
+                        <img src="images/Timmy.png" alt="Timmy">
+                        <h4>Timmy</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    <div class="petCard">
+                        <img src="images/Freddie.png" alt="Freddie">
+                        <h4>Freddie</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                    <div class="petCard">
+                        <img src="images/Charly.png" alt="Charly">
+                        <h4>Charly</h4>
+                        <button class="learnMoreBtn">Learn more</button>
+                    </div>
+                </div>
+                <!-- Пагинация -->
+                <div class="pagination">
+                    <button class="pageBtn firstBtn">⇤</button>
+                    <button class="pageBtn prevBtn">⭠</button>
+                    <button class="pageNumbers"></button>
+                    <button class="pageBtn nextBtn">⭢</button>
+                    <button class="pageBtn lastBtn">⇥</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ФУТЕР -->
+        <footer id="contacts" class="footer">
+            <div class="footerContent">
+                <div class="footerContacts">
+                    <h3>For questions and suggestions</h3>
+                    <div class="footerContactsMail">
+                        <img src="images/footer/icon-email.svg" alt="#">
+                        <a href="#"><h4>email@shelter.com</h4></a>
+                    </div>
+                    <div class="footerContactsPhone">
+                        <img src="images/footer/icon-phone.svg" alt="#">
+                        <a href="#"><h4>+13 674 567 75 54</h4></a>
+                    </div>
+                </div>
+                <div class="footerLocations">
+                    <h3>We are waiting for your visit</h3>
+                    <div class="footerLocationsBoston">
+                        <img src="images/footer/icon-marker.png" alt="#">
+                        <a href="#"><h4>1 Central Street, Boston (entrance from the store)</h4></a>
+                    </div>
+                    <div class="footerLocationsLondon">
+                        <img src="images/footer/icon-marker.png" alt="#">
+                        <a href="#"><h4>18 South Park, London </h4></a>
+                    </div>
+                </div>
+                <img class="footerPuppy" src="images/footer/footer-puppy.png" alt="#">
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
