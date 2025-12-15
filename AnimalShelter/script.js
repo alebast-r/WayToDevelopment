@@ -1,238 +1,308 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // ==================== СЛАЙДЕР НА ГЛАВНОЙ ====================
     const track = document.querySelector('.slider-track');
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.querySelector('.sliderPetsPage-arrow-prev');
     const nextBtn = document.querySelector('.sliderPetsPage-arrow-next');
     
-    if (!track || !prevBtn || !nextBtn) return;
-
-    let currentIndex = 0;
-    
-    function getSlidesToShow() {
-        const width = window.innerWidth;
-        if (width >= 1280) return 3;
-        if (width >= 768) return 2;
-        return 1;
-    }
-    
-    function getSlideStep() {
-        const slide = document.querySelector('.slide');
-        if (!slide) return 270 + 90;
+    if (track && prevBtn && nextBtn) {
+        let currentIndex = 0;
         
-        const slideWidth = slide.offsetWidth;
-        const trackStyle = getComputedStyle(track);
-        const gap = parseInt(trackStyle.gap) || 90;
-        
-        return slideWidth + gap;
-    }
-    
-    function getMaxIndex() {
-        return Math.max(0, slides.length - getSlidesToShow());
-    }
-    
-    function updateSlider() {
-        const maxIndex = getMaxIndex();
-        const step = getSlideStep();
-        
-        track.style.transition = 'transform 0.5s ease';
-        track.style.transform = `translateX(-${currentIndex * step}px)`;
-        
-        // updateButtons();
-    }
-    
-    function updateButtons() {
-        const maxIndex = getMaxIndex();
-        // Убираем disabled для бесконечной прокрутки
-        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        nextBtn.style.opacity = currentIndex === maxIndex ? '0.5' : '1';
-    }
-    
-    // Обработчики событий с цикличной прокруткой
-    nextBtn.addEventListener('click', function() {
-        const maxIndex = getMaxIndex();
-        
-        if (currentIndex < maxIndex) {
-            currentIndex++;
-        } else {
-            // Достигли конца - возвращаемся в начало
-            currentIndex = 0;
+        function getSlidesToShow() {
+            const width = window.innerWidth;
+            if (width >= 1280) return 3;
+            if (width >= 768) return 2;
+            return 1;
         }
-        updateSlider();
-    });
-    
-    prevBtn.addEventListener('click', function() {
-        const maxIndex = getMaxIndex();
         
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            // Находимся в начале - переходим в конец
-            currentIndex = maxIndex;
+        function getSlideStep() {
+            const slide = document.querySelector('.slide');
+            if (!slide) return 270 + 90;
+            
+            const slideWidth = slide.offsetWidth;
+            const trackStyle = getComputedStyle(track);
+            const gap = parseInt(trackStyle.gap) || 90;
+            
+            return slideWidth + gap;
         }
+        
+        function getMaxIndex() {
+            return Math.max(0, slides.length - getSlidesToShow());
+        }
+        
+        function updateSlider() {
+            const maxIndex = getMaxIndex();
+            const step = getSlideStep();
+            
+            track.style.transition = 'transform 0.5s ease';
+            track.style.transform = `translateX(-${currentIndex * step}px)`;
+        }
+        
+        // Обработчики событий с цикличной прокруткой
+        nextBtn.addEventListener('click', function() {
+            const maxIndex = getMaxIndex();
+            
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateSlider();
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            const maxIndex = getMaxIndex();
+            
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = maxIndex;
+            }
+            updateSlider();
+        });
+        
+        window.addEventListener('resize', function() {
+            currentIndex = Math.min(currentIndex, getMaxIndex());
+            updateSlider();
+        });
+        
+        // Инициализация
         updateSlider();
-    });
-    
-    window.addEventListener('resize', function() {
-        currentIndex = Math.min(currentIndex, getMaxIndex());
-        updateSlider();
-    });
-    
-    // Инициализация
-    updateSlider();
-});
+    }
 
-document.addEventListener('DOMContentLoaded', function() {
+    // ==================== БУРГЕР-МЕНЮ ====================
     const burgerMenu = document.getElementById('burgerMenu');
     const mobileNav = document.getElementById('mobileNav');
-    const overlay = document.createElement('div');
     
-    // Создаем затемненный фон
-    overlay.className = 'overlay';
-    document.body.appendChild(overlay);
-    
-    // Функция открытия/закрытия меню
-    function toggleMenu() {
-        burgerMenu.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = burgerMenu.classList.contains('active') ? 'hidden' : '';
-    }
-    
-    // Клик по бургеру
-    burgerMenu.addEventListener('click', toggleMenu);
-    
-    // Клик по overlay (закрытие)
-    overlay.addEventListener('click', toggleMenu);
-    
-    // Клик по ссылкам в меню (закрытие + активное состояние)
-    const mobileLinks = mobileNav.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            // Убираем active у всех ссылок
-            mobileLinks.forEach(l => l.classList.remove('active'));
-            // Добавляем active к нажатой ссылке
-            this.classList.add('active');
-            toggleMenu(); // ← Закрываем меню
+    if (burgerMenu && mobileNav) {
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+        
+        function toggleMenu() {
+            burgerMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = burgerMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        burgerMenu.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                toggleMenu();
+            });
         });
-    });
-});
+    }
 
-// В конец script.js
-document.addEventListener('DOMContentLoaded', function() {
+    // ==================== ПАГИНАЦИЯ (только на странице Our Pets) ====================
     const petsGrid = document.querySelector('.petsGrid');
     const pageNumbersContainer = document.querySelector('.pageNumbers');
-    const prevBtn = document.querySelector('.prevBtn');
-    const nextBtn = document.querySelector('.nextBtn');
-    const firstBtn = document.querySelector('.firstBtn');
-    const lastBtn = document.querySelector('.lastBtn');
     
-    if (!petsGrid || !pageNumbersContainer) return;
-    
-    // Все карточки
-    const allCards = Array.from(document.querySelectorAll('.petCard'));
-    let currentPage = 1;
-    let cardsPerPage = 8; // По умолчанию для десктопа
-    
-    // Сколько карточек показывать в зависимости от ширины
-    function getCardsPerPage() {
-        const width = window.innerWidth;
-        if (width >= 1280) return 8; // 4x2
-        if (width >= 768) return 6;  // 2x3
-        return 3;                    // 1x3
-    }
-    
-    // Сколько всего страниц
-    function getTotalPages() {
-        return Math.ceil(allCards.length / cardsPerPage);
-    }
-    
-    // Показать карточки для текущей страницы
-    function showCurrentPage() {
-        cardsPerPage = getCardsPerPage();
-        const totalPages = getTotalPages();
+    if (petsGrid && pageNumbersContainer) {
+        const prevBtn = document.querySelector('.prevBtn');
+        const nextBtn = document.querySelector('.nextBtn');
+        const firstBtn = document.querySelector('.firstBtn');
+        const lastBtn = document.querySelector('.lastBtn');
         
-        // Скрываем все карточки
-        allCards.forEach(card => card.style.display = 'none');
+        const allCards = Array.from(document.querySelectorAll('.petCard'));
+        let currentPage = 1;
+        let cardsPerPage = 8;
         
-        // Показываем карточки для текущей страницы
-        const startIndex = (currentPage - 1) * cardsPerPage;
-        const endIndex = startIndex + cardsPerPage;
+        function getCardsPerPage() {
+            const width = window.innerWidth;
+            if (width >= 1280) return 8;
+            if (width >= 768) return 6;
+            return 3;
+        }
         
-        allCards.slice(startIndex, endIndex).forEach(card => {
-            card.style.display = 'block';
-        });
+        function getTotalPages() {
+            return Math.ceil(allCards.length / cardsPerPage);
+        }
         
-        // Обновляем пагинацию
-        updatePagination(totalPages);
-        updateButtons(totalPages);
-      
-        const title = document.querySelector('.ourPetsContent h1');
-        if (title) {
-            title.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'nearest' 
+        function showCurrentPage() {
+            cardsPerPage = getCardsPerPage();
+            const totalPages = getTotalPages();
+            
+            allCards.forEach(card => card.style.display = 'none');
+            
+            const startIndex = (currentPage - 1) * cardsPerPage;
+            const endIndex = startIndex + cardsPerPage;
+            
+            allCards.slice(startIndex, endIndex).forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            updatePagination(totalPages);
+            updateButtons(totalPages);
+            
+            const title = document.querySelector('.ourPetsContent h1');
+            if (title) {
+                title.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }
+        }
+        
+        function updatePagination(totalPages) {
+            pageNumbersContainer.innerHTML = '';
+            
+            const pageBtn = document.createElement('button');
+            pageBtn.className = 'pageNumber active';
+            pageBtn.textContent = currentPage;
+            pageNumbersContainer.appendChild(pageBtn);
+        }
+        
+        function updateButtons(totalPages) {
+            if (prevBtn) prevBtn.disabled = currentPage === 1;
+            if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+            if (firstBtn) firstBtn.disabled = currentPage === 1;
+            if (lastBtn) lastBtn.disabled = currentPage === totalPages;
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showCurrentPage();
+                }
             });
         }
-    }
-    
-    // Обновить номера страниц
-    function updatePagination(totalPages) {
-        pageNumbersContainer.innerHTML = '';
         
-        const pageBtn = document.createElement('button');
-        pageBtn.className = 'pageNumber active'; // Только этот класс
-        pageBtn.textContent = currentPage;
-        // Не добавляем disabled - вместо этого pointer-events: none в CSS
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < getTotalPages()) {
+                    currentPage++;
+                    showCurrentPage();
+                }
+            });
+        }
         
-        pageNumbersContainer.appendChild(pageBtn);
-    }
-    
-    // Обновить состояние кнопок
-    function updateButtons(totalPages) {
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === totalPages;
-        firstBtn.disabled = currentPage === 1;
-        lastBtn.disabled = currentPage === totalPages;
-    }
-    
-    // Обработчики кнопок
-    prevBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            showCurrentPage();
+        if (firstBtn) {
+            firstBtn.addEventListener('click', () => {
+                currentPage = 1;
+                showCurrentPage();
+            });
         }
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        if (currentPage < getTotalPages()) {
-            currentPage++;
-            showCurrentPage();
+        
+        if (lastBtn) {
+            lastBtn.addEventListener('click', () => {
+                currentPage = getTotalPages();
+                showCurrentPage();
+            });
         }
-    });
-    
-    firstBtn.addEventListener('click', () => {
-        currentPage = 1;
+        
+        window.addEventListener('resize', function() {
+            const oldCardsPerPage = cardsPerPage;
+            cardsPerPage = getCardsPerPage();
+            
+            if (oldCardsPerPage !== cardsPerPage) {
+                const firstCardIndex = (currentPage - 1) * oldCardsPerPage;
+                currentPage = Math.floor(firstCardIndex / cardsPerPage) + 1;
+                showCurrentPage();
+            }
+        });
+        
         showCurrentPage();
-    });
-    
-    lastBtn.addEventListener('click', () => {
-        currentPage = getTotalPages();
-        showCurrentPage();
-    });
-    
-    // При изменении размера окна
-    window.addEventListener('resize', function() {
-        const oldCardsPerPage = cardsPerPage;
-        cardsPerPage = getCardsPerPage();
+    }
+
+    // ==================== МОДАЛЬНЫЕ ОКНА ====================
+    function initModals() {
+        const slideButtons = document.querySelectorAll('.slide button');
+        const learnMoreButtons = document.querySelectorAll('.learnMoreBtn');
+        const allModalButtons = [...slideButtons, ...learnMoreButtons];
         
-        // Если изменилось количество карточек на странице, пересчитываем
-        if (oldCardsPerPage !== cardsPerPage) {
-            const firstCardIndex = (currentPage - 1) * oldCardsPerPage;
-            currentPage = Math.floor(firstCardIndex / cardsPerPage) + 1;
-            showCurrentPage();
-        }
+        const modalCloseBtns = document.querySelectorAll('.modal-close-btn');
+        const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+        if (allModalButtons.length === 0) return;
+
+        // Открытие модалки
+        allModalButtons.forEach((btn, index) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const modalIndex = (index % 8) + 1;
+                const modal = document.getElementById(`modal-${modalIndex}`);
+                
+                if (modal) {
+                    modalOverlays.forEach(m => m.classList.remove('active'));
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Закрытие по крестику
+        modalCloseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal-overlay');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Закрытие по клику на фон
+        modalOverlays.forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modalOverlays.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Инициализируем модалки
+    initModals();
+
+
+
+    // ==================== КОПИРОВАНИЕ КОНТАКТОВ ====================
+        // Элементы, которые копируем
+        const contacts = [
+            { selector: '.footerContactsMail a', text: 'email@shelter.com' },
+            { selector: '.footerContactsPhone a', text: '+13 674 567 75 54' },
+            { selector: '.footerLocationsBoston a', text: '1 Central Street, Boston (entrance from the store)' },
+            { selector: '.footerLocationsLondon a', text: '18 South Park, London' },
+            { selector: '.donationCreditCard a', text: '8380 2880 8028 8791 7435'}
+        ];
+
+        contacts.forEach(contact => {
+            const element = document.querySelector(contact.selector);
+            if (!element) return;
+
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Создаём временное поле для копирования
+                const tempInput = document.createElement('input');
+                tempInput.value = contact.text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+            });
+
+            // Добавляем курсор и подсказку
+            element.style.cursor = 'pointer';
+            element.title = 'Кликните, чтобы скопировать';
+        });
     });
-    
-    // Инициализация
-    showCurrentPage();
-});
