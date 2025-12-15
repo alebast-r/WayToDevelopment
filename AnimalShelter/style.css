@@ -9,10 +9,12 @@
     --color-dark-l: #545454;
     --color-dark-m: #B2B2B2;
     --color-dark-s: #CDCDCD;
+    --color-dark: #000000;
     /* Переменные для указания ширины */
     --container-desktop: 1280px;
     --container-tablet: 768px;
     --container-mobile: 375px;
+
 }
 
 html {
@@ -525,6 +527,7 @@ header span:last-child{
     background: var(--color-light-s);
     border-radius: 100px;
     padding: 15px 45px;
+    transition: all 0.3s ease;
 }
 .slide button a{
     text-decoration: none;
@@ -575,6 +578,9 @@ header span:last-child{
 }   
 .GetToKnowTheRest:hover{
     background-color: var(--color-primary);
+}
+.slide button:hover {
+    background-color: var(--color-primary); /* Заполняем цветом */
 }
 
         /* ========================= PETS-TABLET ========================= */
@@ -1312,3 +1318,202 @@ header span:last-child{
     }
 }
 
+
+/* ==================== MODAL ANIMAL CARD LAPTOP ==================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--color-light-s);
+    border-radius: 9px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 30px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-light-s);
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-dark-l);
+    transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    background: var(--color-primary);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.modal-body img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 9px;
+    align-self: center;
+}
+
+.modal-info h3 {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    color: var(--color-dark);
+    margin: 0 0 10px 0 !important; 
+    font-weight: 400;
+    
+}
+
+.raceAnimal{
+    font-family: Georgia, serif;
+    font-size: 20px;
+    line-height: 115%;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0,06em;
+}
+
+.modal-info p {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: var(--color-dark-xl);
+    margin: 10px 0;
+    letter-spacing: 0.06em;
+}
+
+.modal-info strong {
+    color: var(--color-dark-l);
+    padding-right: 5px;
+    display: inline-block;
+}
+
+.modal-description {
+    margin-block: 40px !important;
+    max-width: 350px;
+    font-family: Georgia, serif;
+    letter-spacing: 0.06em;
+    line-height: 110%;
+}
+.pWithBullet {
+    position: relative;
+    padding-left: 15px;
+}
+
+.pWithBullet::before {
+    content: "•"; 
+    position: absolute;
+    left: 0;
+    color: var(--color-primary); 
+    font-size: 20px; 
+    line-height: 1;
+}
+
+
+
+
+/* ==================== MODAL ANIMAL CARD TABLET ==================== */
+@media (max-width: 1279px){
+    .modal-content {
+        max-width: 630px;
+        padding: 25px;
+    }
+    
+    .modal-body {
+        flex-direction: row;
+        gap: 25px;
+    }
+    
+    .modal-body img {
+        max-width: 300px;
+        height: 300px;
+    }
+    
+    .modal-info h3 {
+        font-size: 30px;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+    
+    .modal-info p {
+        font-size: 13px;
+        line-height: 110%;
+    }
+    
+    .modal-description {
+        margin-top: 30px !important;
+        font-size: 14px !important;
+        line-height: 150% !important;
+    }
+    
+    .modal-close-btn {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+}
+
+
+/* ==================== MODAL ANIMAL CARD MOBILE ==================== */
+@media (max-width: 767px) {
+    .modal-body img{
+        display: none;
+    }
+    .modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    .modal-info h3 {
+        font-size: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    
+    .modal-info p {
+        font-size: 14px;
+        line-height: 150%;
+        text-align: left;
+        margin: 8px 0;
+    }
+    .modal-content{
+        width: auto;
+        padding: 15px;
+    }
+    .modal-close-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
